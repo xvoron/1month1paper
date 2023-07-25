@@ -5,8 +5,9 @@ from utils import model_params
 
 
 class VGGNet(nn.Module):
-    def __init__(self):
+    def __init__(self, num_classes:int = 1000):
         super().__init__()
+
         self.convs = nn.Sequential(
                 nn.Conv2d(3, 64, kernel_size=3, padding=1),
                 nn.ReLU(inplace=True),
@@ -37,9 +38,11 @@ class VGGNet(nn.Module):
         self.fc = nn.Sequential(
                 nn.Linear(512 * 7 * 7, 4096),
                 nn.ReLU(inplace=True),
+                nn.Dropout(0.5),
                 nn.Linear(4096, 4096),
                 nn.ReLU(inplace=True),
-                nn.Linear(4096, 1000),
+                nn.Dropout(0.5),
+                nn.Linear(4096, num_classes),
                 )
         self.head = nn.Softmax(dim=1)
 
