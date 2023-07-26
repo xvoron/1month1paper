@@ -55,7 +55,7 @@ class VGGNet(nn.Module):
 
 
 if __name__ == '__main__':
-        
+
     model = VGGNet()
     model_params(model)
     input = torch.randn(1, 3, 224, 224)

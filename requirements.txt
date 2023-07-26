@@ -1,0 +1,9 @@
+torch
+torchvision
+opencv-python
+prettytable
+click
+tensorboard
+tqdm
+pillow
+matplotlib
